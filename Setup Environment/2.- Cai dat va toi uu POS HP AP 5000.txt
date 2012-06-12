@@ -1,0 +1,238 @@
+﻿Cai dat va toi uu POS Hp AP-5000
+
+What?
+   1-  WinXP SP3/POS Ready
+   2- Driver
+      F:\Sunflower\PosDriverAndUtils\AP5000 Driver Final
+   3- Utils
+      F:\Sunflower\PosDriverAndUtils\Utils
+   4- Ghost
+      F:\Sunflower\Ghost
+How?
+I.POS Ready
+   1- Name: 	        SmartBizPOS-AP5000
+      Org: 		SUNFLOWER
+      Select Partition 1 -> next -> ok.    	
+   2- Partition
+      - 50 Gb  System(C:)  51200 Mb
+      - 80 Gb  Working(D:) 81920 Mb
+      - 80 Gb  Data(E:)    81920 Mb
+      - 23 Gb  Backup(F:)  23552 Mb
+   3- Key cua POS Ready 2009: KFF8R-TMHF4-GKT2P-KGDHH-FXPMB
+      Key WinXP
+   4- Languages : English.
+   5- Install -> select Custom -> Option Component
+	Check:
+      		- Calculator
+      		- Notepad
+		- WordPad
+		- Disk Management
+		- Paint
+		- Calc
+	Not check: 
+		Vao Control Panel--->Chon Add/Remove Windows Components
+		- MSN Explorer
+		- Update Root
+                - Windows messenger
+   5- Window Cache : 
+	Right Click computer --> properties chon Tab Advanced --> Performance chon Settings
+	Gap doi Ram : 4092
+   6- Computer Name: POS_AP5000
+               pass: abc123!@#
+   7- Workgroup: SUNFLOWERVN
+	
+II.Driver
+   1.1 - HP Compaq Business Desktop BIOS Replication Utility sp50029
+   1.2 - HP Compaq Business Desktop ROMPaq Firmware (ROM Family 1A08) sp48851
+   2.  - Intel Chipset Support for Microsoft Windows sp38488      
+   3.  - VIA High-Definition Audio Driver sp47498
+   4.1 - Video Refresh Rate Utility for Microsoft Windows 2000, XP, and Vista sp36746
+   4.2 - Intel Graphics Driver sp42426
+   5   - HP USB Smartcard Keyboard Drivers sp45492          x	
+   6.1 - Ralink WLAN Driver 802.11 Win XP (32bit) sp50397  x
+   6.2 - Broadcom NetXtreme Gigabit Ethernet Plus Drivers sp50264  x
+   6.3 - Realtek PCIe GBE Family (Ethernet 8168) NIC Drivers sp47479  
+   7.1 - Common Control Object (CCO) Drivers sp47462
+   7.2 - Intel RAID Driver and Configuration Software sp49161 (option)
+   8.1 - HP ap5000 Touch Screen Software and Driver sp51654
+   8.2 - HP OPOS Logical Name Utility sp51652    x
+   8.3 - Common Control Object (CCO) Drivers sp47462   x
+   9.1 - HP ap5000 Magnetic Stripe Reader (MSR) Configuration Utility sp50889
+   9.2 - HP ap5000 Magnetic Stripe Reader (MSR) JPOS Drivers sp50890    
+   9.3 - HP ap5000 Magnetic Stripe Reader (MSR) Windows Test Utility sp50893
+   10.1- HP ap5000 Vacuum Fluorescent Display (VFD) JPOS Drivers sp51653 x      
+   10.2- HP ap5000 Vacuum Fluorescent Display (VFD) OPOS Drivers sp47490
+         +Chon Port: COM2(Neu khong hien thi,thi vao BIOS set up lai cong COM2 la 5V)
+           Huong dan vao BIOS: Restart may--->nhan F10 de vao Bios--->Chon Tap Advance-->Set up COM2 5V
+   10.3- HP ap5000 Vacuum Fluorescent Display (VFD) OPOS Test Util sp47491
+   11.1- HP USB Receipt Mode Selector Utility sp51657
+   11.2- HP USB Receipt Printer - Microsoft Windows Printer Drivers  sp51658
+   11.3- HP USB Receipt Printer Firmware Upgrade (A799) sp51667       
+   11.4- HP USB Receipt Printer JPOS Drivers and Utility sp50904
+   11.5- HP USB Line Display Test Utility (Microsoft Windows Non-OPOS) sp50919  x
+   12.1- HP USB Receipt Printer Firmware Upgrade (A794) sp38003    x
+         +Existing Groups: Chon HPhmUtility
+   12.2- HP USB Receipt Printer Firmware Upgrade (A799) sp51667    x
+   12.3- HP USB Receipt Printer JPOS Drivers and Utility sp50904   x
+   13  - HP Management Agent sp45486    x
+   14  - HP USB Barcode Scanner JPOS Drivers and Utility sp50902
+   15  - HP USB Magnetic Stripe Reader (MSR) JPOS Drivers and Utility sp50915  x
+   16  - HP USB Mini Magnetic Stripe Reader (MSR) Configuration Software sp50914  x
+   17  - Vao thu muc Printer: Chay sp50904
+ 
+III- Optimize
+Chep thu muc i386 tu dia cai win toi C:\Window\
+   1. Antivirus: Install AVG
+      Update AVG
+   2. Update Window
+   3. Disk C -> Properties -> General  -> Disk Cleanup
+					   Check Now   
+   4. Start Menu -> Chon Classic
+      - Toi uu hóa Start Menu :
+        + Chuyen Start Menu thành kieu Classic co dien 
+          ( Right Click vào Taskbar --> Properties-->Star Menu --> Classic Star Menu --> Click ok )
+      - Right Click computer --> properties chon Tab Advanced --> Performance--->Click Settings
+          Check Adjust for best Perfomance
+      - Right Click computer --> properties chon Tab Automatic Update
+          Check Turn off Automatic Updates
+      - Right Click computer --> properties chon Tab System Restore
+          Check Turn Off
+      - Right Click computer --> properties chon Tab Remote
+          + Not Check Remote Assistance
+    * Start-> run -> Windows ->gõ "Regedit" rOi tìm khoá 
+      “HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Managerment” trong màn hình bên trái. Trong màn hình bên phai click DisablePagingExecutive roi click edit và sua con so trong ô Value Data thành so 1. Click OK  
+   5.Test 3D
+     - Properties--->Creen Saver 
+   	  + Chon 3D Text 
+          + Wait:6
+          + Click Settings: - Custom Text: www.sunflowervn.vn
+			    - Choose Font: Palatino
+   6.Select icons and notifications
+     -Right Click Taskbar--->Properties-->Notification area-->Click Customize
+        +Chon Always show
+           . Network
+           . Volume
+	   . Antivirus	
+	+Chon Hide When Active
+           . Safe Remove Hardware
+	+Chon Always hide 
+           . Window Tast Manager
+	   . Window Security Alerts
+   7.Set DNS
+        Right Click My Network Places-->Properties-->Local Area Connection--> Properties
+          - DNS  :  8-8-8-8
+		    8-8-4-4
+   8. Tat Services:Vào Start-->Run-->Gõ services.msc
+        Alerter                                  : Disabled
+        Application Layer Gateway Service        : Manual
+        Application Management                   : Manual
+        Automatic Updates                        : Disabled
+	Avira Guard				 : Manual
+	Avira Schedule				 : Manual
+        Background Intelligent Transfer Service  : Disabled
+        ClipBook                                 : Disabled
+        COM+ Event System                        : Manual
+        COM+ System Application                  : Manual
+        Computer Browser                         : Automatic
+        Cryptographic Services                   : Automatic
+        DHCP Client                              : Automatic
+        Distributed Link Tracking Client         : Manual
+        Distributed Transaction Coordinator      : Manual
+        DNS Client                               : Manual
+        Error Reporting Service                  : Disabled
+        Event Log		                 : Disabled
+        Fast User Switching Compatibility        : Manual
+        Help and Support                         : Manual
+        Human Interface Device Access            : Manual
+        IMAPI CD-Burning COM Service             : Manual
+        Indexing Service                         : Disabled
+        IPSEC Services                           : Disabled
+        Logical Disk Manager                     : Manual
+        Logical Disk Manager Administrative Service: Manual
+        Messenger                                : Disabled
+        MS Software Shadow Copy Provider         : Manual
+        Net Logon                                : Disabled
+        NetMeeting Remote Desktop Sharing        : Disabled
+        Network Connections                      : Manual
+        Network DDE                              : Disabled
+        Network DDE DSDM                         : Disabled
+        Network Location Awareness (NLA)         : Manual
+        NT LM Security Support Provider          : Manual
+        Performance Logs and Alerts              : Disabled
+        Plug and Play                            : Automatic
+        Portable Media Serial Number Service     : Disabled
+        Print Spooler                            : Automatic
+        Protected Storage                        : Manual
+        QoS RSVP                                 : Disabled
+        Remote Access Auto Connection Manager    : Manual
+        Remote Access Connection Manager         : Manual
+        Remote Desktop Help Session Manager      : Disabled
+        Remote Procedure Call (RPC)              : Automatic
+        Remote Procedure Call (RPC) Locator      : Manual
+        Remote Registry                          : Disabled
+        Removable Storage                        : Manual
+        Routing and Remote Access                : Disabled
+        Secondary Logon                          : Disabled
+        Security Accounts Manager                : Automatic
+        Server                                   : Automatic
+        Shell Hardware Detection                 : Automatic
+        Smart Card                               : Disabled
+        SSDP Discovery Service                   : Manual
+        System Event Notification                : Automatic
+        System Restore Service                   : Disabled
+        Task Scheduler                           : Manual 
+        TCP/IP NetBIOS Helper                    : Disabled
+        Telephony                                : Manual
+	Telnet			                 : Disabled
+        Terminal Services                        : Disabled
+        Themes                                   : Disabled
+        Uninterruptible Power Supply             : Disabled
+        Universal Plug and Play Device Host      : Disabled
+        Volume Shadow Copy                       : Manual
+        WebClient                                : Disabled
+        Windows Audio                            : Automatic
+	Window Firewall				 : Manual
+        Windows Image Acquisition (WIA)          : Manual
+        Windows Installer                        : Manual
+        Windows Management Instrumentation       : Automatic
+        Windows Management Instrumentation Driver Extensions:Manual	
+        Windows Time                             : Disabled
+        Wireless Zero Configuration              : Disabled
+        WMI Performance Adapter                  : Disabled
+        Workstation                              : Automatic
+   9. Add remove programe
+   10. Cleanup => run CCleaner
+      CCleaner: Check All  +Cleaner
+                           +Register
+                           +Tool-->Startup(msconfig)
+   11. Delete Run : %temp%
+   12. Msconfig : Run:msconfig-> Startup -> Chon AVG
+---------------------------------------------------------------------------------------------------
+   13.Install Software:
+	+Install firefox (tu F:\Sunflower\PosDriverAndUtils\Utils\Installed toi C:\)	
+	+Install JDK  (tu F:\Sunflower\PosDriverAndUtils\Utils\Installed toi C:\Sunflower\3rd-PartySofts\java\jdk)
+	         JR6:  C:\Sunflower\3rd-PartySofts\java\jdk\jre6      
+	+Install Mysql(cai ban full)
+           -Cai tu F:\Sunflower\PosDriverAndUtils\Utils\Installed toi C:\Sunflower\3rd-PartySofts\mysql
+	   -Khi cai chon Customize->pass word root: abc123!@#
+	   -change path MySql Data File is: "C:\Sunflower\3rd-PartySofts\mysql\mysql-data"
+        +Install Navicat
+	   -Cai tu F:\Sunflower\PosDriverAndUtils\Utils\Installed toi C:\Sunflower\3rd-PartySofts\u_navicat
+	+Install TeamView
+	   -Cai tu F:\Sunflower\PosDriverAndUtils\Utils\Installed toi C:\Sunflower\3rd-PartySofts\u_teamviewer	
+	+Install Skype 
+		User: Smartbizpos
+		Pass: 741852qwe
+	+Install Unikey
+	   -Cai tu F:\Sunflower\PosDriverAndUtils\Utils\Installed toi C:\Sunflower\3rd-PartySofts\u_unikey
+	+Install winrar
+	   -Cai tu F:\Sunflower\PosDriverAndUtils\Utils\Installed toi C:\Sunflower\3rd-PartySofts\u_winrar	
+	 Chú ý: Open Firefox
+		Vào Tool->Option
+		           set homepage: www.sunflowervn.vn, hide toolbar	
+	+OpenOfficePortable/OfficePortable    (Option)	 
+   14.Disk C -> Properties -> General  -> Disk Cleanup 
+				-> Tools 	-> Check now
+						-> Defragment now.
+   15.Check and test software
+   16.Ghost

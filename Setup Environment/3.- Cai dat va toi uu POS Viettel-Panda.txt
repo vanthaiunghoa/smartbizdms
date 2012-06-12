@@ -1,0 +1,205 @@
+﻿Cai dat va toi uu POS Viettel-Panda
+
+What?
+   1- Window7 Professional
+   2- Driver
+      F:\Sunflower\PosDriverAndUtils\Drivers
+   3- Utils
+      F:\Sunflower\PosDriverAndUtils\Utils
+   4- Ghost
+      F:\Sunflower\Ghost
+
+How?
+I. Install Window7 Professional
+   Key Window7: 
+   1- Name: 	SmartBizPosViettel
+      Org : 	SUNFLOWER
+      Select Partition 1 -> next -> ok.    	
+   2- Partition
+      - 60 Gb  System(C:)   61440 Mb
+      - 60 Gb  Working(D:)  61440 Mb
+      - 60 Gb  Misc(E:)     61440 Mb
+      - 55 Gb  Backup(F:)   56320 Mb
+   3- Window7   Key:
+   4- Languages : English.
+      Location: 7+Bangkok-HaNoi
+   5- Window Cache : Gap doi Ram : 4096
+   6- Computer Name: POS_VIETTEL
+               pass: abc123!@#
+   7- Workgroup: SUNFLOWERVN
+	
+II.Driver
+   Bo dia Driver di kem voi may()->Chon Select All->Install 
+   1- Chipset
+   2- Graphic
+      1366 X 768 Landcape
+   3- Adio
+   4- HDMI (Chua co cable HDMI)
+   5- Lan     
+   6- WLan Wireless Lan           
+   7- Card Reader(Chua Test)
+      
+III- Optimize
+   0. Update Window(Window7)
+	Programs->Window Update
+   1. Antivirus: 
+	- Install avira 
+        - Update  avira
+   2. Disk C -> Properties -> General  -> Disk Cleanup
+					  Check Now 
+   3. Start Menu -> Chon Classic
+      + Personalize->Window Classic
+      + Control Panel-->System and Security-->Windows Update
+	 Turn off Automatic Updates
+    * Start-> run -> Windows ->gõ "Regedit" roi tìm khoá 
+      “HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Managerment” trong màn hình bên trái. Trong màn hình bên phai click DisablePagingExecutive roi click edit và sua con so trong ô Value Data thành so 1. Click OK
+   4.Remote & VisualEffects
+     - My Computer-->Properties--> Chon the Remote
+          +Not Check Remote Assistance
+     - My Computer-->Properties--> Chon the Advance-->Settings
+          +Check Adjust for best Performance 
+   5.Test 3D
+     - Personalize--->Creen Saver(3D Text) 
+   	  + Chon 3D Text 
+          + Wait:6
+          + Click Settings: - Custom Text: www.sunflowervn.vn
+			    - Choose Font: Palatino
+   6.Select icons and notifications
+     -Right Click Taskbar--->Properties-->Notification area-->Click Customize       
+	+Chon Show icon and notifications
+           . Network
+           . Volume
+	+Chon Only Show notifications
+           . Antivirus
+           . Window Explorer
+	   . CCleaner
+	   . Windowices Divice Installation
+	   . Realtek HD Audio
+	+Chon Hide icon and notifications
+           . Medial Center Panel
+           . Window Host
+	   . Window Update
+	   . iffxTray Module
+	   . Realtek HD Audio
+   7.Set DNS
+        Control Panel-->Network and Internet-->Network and Sharing Center-->Local Area Connection--> Click Properties
+          - Homenetwork & Worknetwork:(mac dinh chon WorkNetWork)
+		DNS  :  8-8-8-8
+		        8-8-4-4
+          - Check    :  Trong the General 
+			  + Check Validate settings upon exit
+            Not Check:  Trong the Networking
+			  + Internet protocol Version 6
+                          + Link layer i/o Driver
+			  + Link layer Responder
+   8. Tat Services:
+	ActiveX Installer (AxInstSV)             :       Manual
+	Adaptive Brightness                      :       Manual
+	Application Layer Gateway Service        :       Manual
+	Application Management                   :       Disabled
+	Background Intelligent Transfer Service  :       Manual
+	Base Filtering Engine                    :       Manual
+	Block Level Backup Engine Service        :       Disabled
+        Bluetooth Support Service                :       Disabled
+	BranchCache                              :       Disabled
+	Certificate Propagation                  :       Disabled
+	CNG Key Isolation                        :       Manual
+	Credential Manager                       :       Manual
+	Desktop Window Manager Session Manager   :       Manual
+	Diagnostic Policy Service                :       Automatic
+	Diagnostic System Host                   :       Manual
+	Distributed Link Tracking Client         :       Disabled
+	DNS Client, Encrypting File System (EFS) :       Manual
+	Extensible Authentication Protocol       :       Manual
+	Function Discovery Provider Host         :       Manual
+	Function Discovery Resource Publication  :       Automatic
+	Health Key and Certificate Management    :       Manual
+	HomeGroup fListener, HomeGroup Provider  :       Manual
+	Human Interface Device Access            :       Manual
+	IKE and AuthIP IPsec Keying Modules      :       Manual
+	Interactive Services Detection           :       Manual
+	IP Help                                  : 	 Disabled
+	IPsec Policy Agent                       :       Manual
+	Link-Layer Topology Discovery Mapper     :       Manual
+	Microsoft iSCSI Initiator Service        :       Disabled
+	Netlogon                                 :       Disabled
+	Network Access Protection Agent          :       Disabled
+	Offline Files                            :       Disabled
+	Parental Controls                        :       Disabled
+	Peer Name Resolution Protocol            :       Manual
+	Peer Networking Grouping                 :       Manual
+	Peer Networking Identity Manager         :       Manual
+	PnP-X IP Bus Enumerator                  :       Manual
+	PNRP Machine Name Publication Service    :       Manual 
+	Portable Device Enumerator Service       :       Manual
+	Problem Reports and Solutions Control Panel Support             :       Manual
+	Program Compatibility Assistant Service  :       Manual
+	Quality Windows Audio Video Experience   :       Manual
+	Remote Desktop Configuration             :       Manual 
+	Remote Desktop Services                  :       Manual
+	Remote Desktop Services UserMode Port Redirector                :       Manual
+	Remote Procedure Call (RPC) Locator, Remote Registry            :       Disabled
+	Remote Registry	                         : 	 Disabled
+	Secure Socket Tunneling Protocol Service :       Manual 
+	Security Center                          :       Manual 
+	Smart Card                               :       Disabled
+        Smart Card Policy                        :       Disabled
+        SNMP trap                                :       Disabled
+	Storage Service                          :       Manual 
+	Tablet PC Input Service                  :       Manual 
+	TCP/IP NetBIOS Helper                    :       Manual 
+	Telephony, Themes                        :       Disabled 
+	TPM Base Services                        :       Manual 
+	WebClient                                :       Manual 
+	Windows Biometric Service                :       Manual 
+	Windows Color System                     :       Manual 
+	Windows Connect Now – Config Registrar   :       Disabled 
+	Windows Defender                         :       Manual 
+	Windows Error Reporting Service          :       Manual 
+	Windows Firewall                         :       Manual 
+        Windows Media Player network sharing Services:   Disabled
+        Windows Search                           :       Disabled
+	Windows Remote Management (WS-Management):       Disabled 
+	Windows Time                             :       Disabled 
+	Windows Update                           :       Disabled 
+	WinHTTP Web Proxy Auto-Discovery Service :       Manual
+
+   9. Add remove programe
+	Control Panel->Programs->Programs and Features
+   10. Cleanup 
+       CCleaner: Check All +Cleaner
+                           +Register
+                           +Tool-->Startup(msconfig)
+   11. Delete Run : %temp%
+   12. Msconfig : Run:msconfig-> Startup -> Chon AVG
+
+-----------------------------------------------------------------------------------------------------------------------------------
+   13.Install Software:
+	+Install firefox (tu F:\Sunflower\PosDriverAndUtils\Utils\Installed toi C:\)	
+	+Install JDK  (tu F:\Sunflower\PosDriverAndUtils\Utils\Installed toi C:\Sunflower\3rd-PartySofts\java\jdk)
+	         JR6:  C:\Sunflower\3rd-PartySofts\java\jdk\jre6      
+	+Install Mysql(cai ban full)
+           -Cai tu F:\Sunflower\PosDriverAndUtils\Utils\Installed toi C:\Sunflower\3rd-PartySofts\mysql
+	   -Khi cai chon Customize->pass word root: abc123!@#
+	   -change path MySql Data File is: "C:\Sunflower\3rd-PartySofts\mysql\mysql-data"
+        +Install Navicat
+	   -Cai tu F:\Sunflower\PosDriverAndUtils\Utils\Installed toi C:\Sunflower\3rd-PartySofts\u_navicat
+	+Install TeamView
+	   -Cai tu F:\Sunflower\PosDriverAndUtils\Utils\Installed toi C:\Sunflower\3rd-PartySofts\u_teamviewer	
+	+Install Skype 
+		User: Smartbizpos
+		Pass: 741852qwe
+	+Install Unikey
+	   -Cai tu F:\Sunflower\PosDriverAndUtils\Utils\Installed toi C:\Sunflower\3rd-PartySofts\u_unikey
+	+Install winrar
+	   -Cai tu F:\Sunflower\PosDriverAndUtils\Utils\Installed toi C:\Sunflower\3rd-PartySofts\u_winrar	
+	 Chú ý: Open Firefox
+		Vào Tool->Option
+		           set homepage: www.sunflowervn.vn, hide toolbar	
+	+OpenOfficePortable/OfficePortable    (Option)	 
+   14.Disk C -> Properties -> General  -> Disk Cleanup 
+				-> Tools 	-> Check now
+						-> Defragment now.
+   15.Check and test software
+   16.Ghost
+
