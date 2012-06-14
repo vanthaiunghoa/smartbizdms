@@ -1,0 +1,71 @@
+//    SmartBiz POS is a point of sales application designed for touch screens.
+//    Copyright (C) 2007-2009 SmartBiz, S.L.
+//    http://www.openbravo.com/product/pos
+//
+//    This file is part of SmartBiz POS.
+//
+//    SmartBiz POS is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    SmartBiz POS is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with SmartBiz POS.  If not, see <http://www.gnu.org/licenses/>.
+
+report = new vn.smartbiz.pos.reports.PanelReportBean();
+
+report.setTitleKey("Menu.Inventory");
+report.setReport("/vn/smartbiz/reports/inventory");
+report.setResourceBundle("vn/smartbiz/reports/inventory_messages");
+
+report.setSentence("SELECT " +
+                "STOCKCURRENT.LOCATION AS LOCATIONID, " +
+                "LOCATIONS.NAME AS LOCATIONNAME, " +
+                "PRODUCTS.REFERENCE, " +
+                "PRODUCTS.NAME AS PRODUCTNAME, " +
+                "PRODUCTS.CATEGORY, " +
+                "CATEGORIES.NAME AS CATEGORYNAME, " +
+                "SUM(STOCKCURRENT.UNITS) AS UNITS, " +
+                "PRODUCTS.PRICEBUY, " +
+                "PRODUCTS.PRICESELL, " +
+                "COALESCE(PRODUCTS.STOCKVOLUME, 0) AS STOCKVOLUME, " +
+                "COALESCE(PRODUCTS.STOCKCOST, 0) AS STOCKCOST, " +
+                "COALESCE(STOCKLEVEL.STOCKSECURITY, 0) AS STOCKSECURITY, " +
+                "COALESCE(STOCKLEVEL.STOCKMAXIMUM, 0) AS STOCKMAXIMUM " +
+                "FROM STOCKCURRENT " +
+                "JOIN LOCATIONS ON STOCKCURRENT.LOCATION = LOCATIONS.ID " +
+                "JOIN PRODUCTS ON STOCKCURRENT.PRODUCT = PRODUCTS.ID " +
+                "JOIN CATEGORIES ON PRODUCTS.CATEGORY = CATEGORIES.ID " +
+                "LEFT OUTER JOIN STOCKLEVEL ON STOCKCURRENT.LOCATION = STOCKLEVEL.LOCATION AND STOCKCURRENT.PRODUCT = STOCKLEVEL.PRODUCT " +
+                "WHERE ?(QBF_FILTER) " +
+                "GROUP BY STOCKCURRENT.LOCATION, LOCATIONS.NAME, PRODUCTS.REFERENCE, PRODUCTS.NAME, PRODUCTS.CATEGORY, CATEGORIES.NAME, PRODUCTS.PRICEBUY, PRODUCTS.PRICESELL, PRODUCTS.STOCKVOLUME, PRODUCTS.STOCKCOST, STOCKLEVEL.STOCKSECURITY, STOCKLEVEL.STOCKMAXIMUM " +
+                "ORDER BY STOCKCURRENT.LOCATION, CATEGORIES.NAME, PRODUCTS.NAME");
+report.addParameter("PRODUCTS.NAME");
+report.addParameter("PRODUCTS.PRICEBUY");
+report.addParameter("PRODUCTS.PRICESELL");
+report.addParameter("PRODUCTS.CATEGORY");
+report.addParameter("PRODUCTS.CODE");
+report.addQBFFilter(new vn.smartbiz.pos.ticket.ProductFilter());
+report.addParameter("STOCKCURRENT.LOCATION");
+report.addQBFFilter(new vn.smartbiz.pos.reports.JParamsLocationWithFirst());
+
+report.addField("LOCATIONID", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("LOCATIONNAME", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("REFERENCE", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("NAME", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("CATEGORY", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("CATEGORYNAME", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("UNITS", vn.smartbiz.data.loader.Datas.DOUBLE);
+report.addField("PRICEBUY", vn.smartbiz.data.loader.Datas.DOUBLE);
+report.addField("PRICESELL", vn.smartbiz.data.loader.Datas.DOUBLE);
+report.addField("STOCKVOLUME", vn.smartbiz.data.loader.Datas.DOUBLE);
+report.addField("STOCKCOST", vn.smartbiz.data.loader.Datas.DOUBLE);
+report.addField("STOCKSECURITY", vn.smartbiz.data.loader.Datas.DOUBLE);
+report.addField("STOCKMAXIMUM", vn.smartbiz.data.loader.Datas.DOUBLE);
+
+report;

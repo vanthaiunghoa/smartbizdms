@@ -1,0 +1,44 @@
+//    Copyright (C) 2007-2008 SmartBiz, S.L.
+//    http://sourceforge.net/projects/openbravopos
+//
+//    This program is free software; you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation; either version 2 of the License, or
+//    (at your option) any later version.
+//
+//    This program is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with this program; if not, write to the Free Software
+//    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+report = new vn.smartbiz.pos.reports.PanelReportBean();
+
+report.setTitleKey("Menu.Cash");
+report.setReport("/vn/smartbiz/reports/cash");
+report.setResourceBundle("vn/smartbiz/reports/cash_messages");
+
+report.setSentence("SELECT " +
+				"RECEIPTS.DATENEW, " +
+				"PAYMENTS.PAYMENT, " +
+				"SUM( PAYMENTS.TOTAL ) AS PAYMENT_TOTAL " +
+				"FROM TICKETS, RECEIPTS " +
+				"LEFT JOIN PAYMENTS ON RECEIPTS.ID = PAYMENTS.RECEIPT " +                                
+				"WHERE ?(QBF_FILTER) " +
+                                "AND TICKETS.ID = RECEIPTS.ID " +
+                                "AND TICKETS.TICKETTYPE < 3 " +
+                "GROUP BY DATE_FORMAT(RECEIPTS.DATENEW, '%d.%m.%Y'), PAYMENTS.PAYMENT");
+report.addParameter("RECEIPTS.DATENEW");
+report.addParameter("RECEIPTS.DATENEW");
+paramdates = new vn.smartbiz.pos.reports.JParamsDatesInterval();
+paramdates.setStartDate(vn.smartbiz.beans.DateUtils.getToday());
+report.addQBFFilter(paramdates);
+
+report.addField("DATENEW", vn.smartbiz.data.loader.Datas.TIMESTAMP);
+report.addField("PAYMENT", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("PAYMENT_TOTAL", vn.smartbiz.data.loader.Datas.DOUBLE);
+
+return report;

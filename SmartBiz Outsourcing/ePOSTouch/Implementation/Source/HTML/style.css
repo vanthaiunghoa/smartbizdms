@@ -1,0 +1,94 @@
+@charset "utf-8";
+
+#warp{width:800px; height:600px;margin:0 auto;}
+.hearder{width:800px;height:160px;position:relative;}
+
+ .list{width:176px;height:160px;position:absolute;left:o;top:o;}
+.hearder .list .service{background:url(images/Service.png) no-repeat 0 0;width:176px;height:80px;}
+
+.hearder .list a{text-decoration:none;color:#fff;}
+.hearder .list h2{
+	padding:0;margin:0;
+	text-align:center;
+	font-family:tahoma;
+	font-size:26px;
+	color:#fd0000;
+	line-height:3;
+	text-decoration:none;
+	list-style-type:none;font-weight:bold;
+}
+
+
+.hearder .appointment h2{font-size:26px;font-family:Tahoma;font-weight:bold; text-align:center;position:relative;top:40px;}
+.hearder .appointment h2 a{text-decoration:none;color:#000;}
+.hearder .customerwalk h2 a{text-decoration:none;color:#fd0000;}
+.hearder .creditcard h2 a{text-decoration:none;color:#fd0000;}
+.hearder .dailyreport h2 a{text-decoration:none;color:#fd0000;}
+
+.hearder .list .product{background:url(images/Product.png) no-repeat 0 0;width:176px;height:80px;}
+
+.hearder .appointment{background:url(images/Appointment.png) no-repeat;
+	position:absolute; left:181px;top:0;width:176px;height:160px;}
+
+.hearder .customerwalk{background:url(images/Customer-Walk-in-list.png) no-repeat;width:176px;height:160px;position:absolute;left:361px;top:0;}
+.hearder .customerwalk h2{font-size:26px;font-family:Tahoma;font-weight:bold; text-align:center;position:relative;top:25px;}
+
+.hearder .creditcard{background:url(images/Credit-Card.png) no-repeat;width:155px;height:160px; position:absolute;left:543px;top:0;}
+.hearder .creditcard h2{font-size:26px;font-family:Tahoma;font-weight:bold; text-align:center;position:relative;top:25px;}
+
+.hearder .dailyreport{background:url(images/Daily-Report.png) no-repeat;width:97px;height:160px;position:absolute;top:0;left:702px;}
+.hearder .dailyreport h2{font-size:26px;font-family:Tahoma;font-weight:bold; text-align:center;position:relative;top:25px;}
+.hearder .dailyreport h2 a{color:#000;}
+.content{width:800px;height:269px;position:relative;}
+
+.content .textmessage h2{font-family:Tahoma;font-size:26px; text-align:center;color:#000;font-weight:bold;position:relative;top:15px;}
+.content .textmessage h2 a{text-decoration:none;color:#000;}
+
+
+.content .logo{width:475px;height:66px;position:absolute;top:8px;left:346px;}
+.content .title{width:295px;height:58px;position:absolute;top:156px;right:0px;}
+.content .payment{ width:151px;height:39px;position:absolute;bottom:40px;right:0px;}
+.content .payment .master{width:62px;height:39px;position:relative;bottom:-40px;right:0;}
+.content .payment .visa{width:86px;height:39px; position:absolute;right:0;}
+
+.content .contentlist{width:119px;height:269px;position:relative;}
+.content .contentlist .textmessage{background:url(images/Text-Message.png) no-repeat;width:156px;height:133px;position:absolute;left:0;top:3px;}
+
+.content .contentlist .emarketing{background:url(images/emarketing.png) no-repeat;width:156px;height:131px;position:absolute;left:0;top:140px;}
+.content .emarketing h2{font-family:Tahoma;font-size:26px; text-align:center;color:#000;font-weight:bold;position:relative;top:20px;}
+.content .emarketing h2 a{text-decoration:none;color:#fff;}
+
+
+.content .contentlist1{width:196px;}
+.content .contentlist1 .giftcard{background:url(images/Gift-Card.png) no-repeat;width:196px;height:78px;position:absolute;left:160px;top:4px;}
+.content .giftcard h2{font-family:Tahoma;font-size:26px; text-align:center;color:#000;font-weight:bold;position:relative;top:3px;}
+.content .giftcard h2 a{text-decoration:none;color:#00e505;}
+
+.content .contentlist1 .membership{background:url(images/Menbership.png) no-repeat;width:196px;height:103px;position:absolute;left:160px;top:86px;}
+.content .membership h2{font-family:Tahoma;font-size:26px; text-align:center;color:#000;font-weight:bold;position:relative;top:14px;}
+.content .membership h2 a{text-decoration:none;color:#00e505;}
+
+.content .contentlist1 .annoucement{background:url(images/Annoucement.png) no-repeat;width:196px;height:78px;position:absolute;left:160px;top:193px;}
+.content .annoucement h2{font-family:Tahoma;font-size:26px; text-align:center;color:#000;font-weight:bold;position:relative;top:0px;}
+.content .annoucement h2 a{text-decoration:none;color:#fff;}
+
+.footer{width:800px;height:160px;position:relative;top:7px;}
+.footer .customer{background:url(images/Customer.png) no-repeat;width:156px;height:160px;position:absolute;left:0;top:0px;}
+.footer .customer h2{font-family:Tahoma;font-size:26px;font-weight:bold;text-align:center;position:relative;top:45px;}
+.footer .customer h2 a{text-decoration:none;color:#fd0000;}
+
+.footer .open{background:url(images/Open-Cash-Drawer.png) no-repeat;width:156px;height:160px;position:absolute;left:161px;top:0px;}
+.footer .open h2{font-family:Tahoma;font-size:26px;font-weight:bold;text-align:center;position:relative;top:12px;}
+.footer .open h2 a{text-decoration:none;color:#000;}
+
+.footer .backoffice{background:url(images/Back-Office.png) no-repeat;width:156px;height:160px;position:absolute;left:322px;top:0px;}
+.footer .backoffice h2{font-family:Tahoma;font-size:26px;font-weight:bold;text-align:center;position:relative;top:30px;}
+.footer .backoffice h2 a{text-decoration:none;color:#fd0000;}
+
+.footer .lock{background:url(images/Lock.png) no-repeat;width:156px;height:160px;position:absolute;left:483px;top:0px;}
+.footer .lock h2{font-family:Tahoma;font-size:26px;font-weight:bold;text-align:center;position:relative;top:30px;}
+.footer .lock h2 a{text-decoration:none;color:#00088c;}
+
+.footer .exit{background:url(images/Exit.png) no-repeat;width:156px;height:160px;position:absolute;left:644px;top:0px;}
+.footer .exit h2{font-family:Tahoma;font-size:26px;font-weight:bold;text-align:center;position:relative;top:22px;}
+.footer .exit h2 a{text-decoration:none;color:#fd0000;}

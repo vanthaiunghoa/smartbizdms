@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="redinvoice" pageWidth="594" pageHeight="842" columnWidth="543" leftMargin="33" rightMargin="18" topMargin="68" bottomMargin="0">
+	<property name="ireport.zoom" value="1.2100000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="240"/>
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<field name="TICKET" class="vn.smartbiz.pos.ticket.TicketInfo"/>
+	<field name="TAXESLOGIC" class="java.lang.Object"/>
+	<group name="C_INVOICE">
+		<groupExpression><![CDATA[$F{TICKET}]]></groupExpression>
+		<groupHeader>
+			<band height="26"/>
+		</groupHeader>
+		<groupFooter>
+			<band height="150">
+				<textField isBlankWhenNull="false">
+					<reportElement key="textField-7" x="328" y="27" width="147" height="14"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{TICKET}.printExtTotalDouble()]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false">
+					<reportElement key="textField-7" x="125" y="40" width="350" height="31"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left">
+						<font size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{TICKET}.printTotalWords()]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false">
+					<reportElement key="textField-6" x="100" y="13" width="111" height="14"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left">
+						<font size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["10"]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false">
+					<reportElement key="textField-6" x="328" y="14" width="147" height="14"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{TICKET}.printExtTaxDouble()]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false">
+					<reportElement key="textField-8" x="328" y="0" width="147" height="14"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right">
+						<font size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{TICKET}.printExtSubTotalDouble()]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="250" splitType="Stretch">
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-4" x="76" y="157" width="451" height="18">
+					<printWhenExpression><![CDATA[Boolean.valueOf($F{TICKET}.getCustomer() != null)]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Top">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{TICKET}.getCustomer().getName()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-12" x="85" y="195" width="116" height="18" forecolor="#000000"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Arial" size="10" isBold="false" pdfFontName="arialbd.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{TICKET}.getCustomer().getBankAccount()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-5" x="64" y="176" width="463" height="18">
+					<printWhenExpression><![CDATA[Boolean.valueOf($F{TICKET}.getCustomer() != null)]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Top">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{TICKET}.getCustomer().getAddress()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-4" x="134" y="137" width="355" height="18">
+					<printWhenExpression><![CDATA[Boolean.valueOf($F{TICKET}.getCustomer() != null)]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Top">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{TICKET}.getCustomer().getContactName()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-53" x="311" y="213" width="18" height="18" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" pdfFontName="arial.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[( $F{TICKET}.getCustomer().getTaxID().length() > 5 ? $F{TICKET}.getCustomer().getTaxID().substring( 5, 6 ) : "------" )]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-58" x="422" y="213" width="18" height="18" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" pdfFontName="arial.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[( $F{TICKET}.getCustomer().getTaxID().length() > 11 ? $F{TICKET}.getCustomer().getTaxID().substring( 11, 12 ) : "------" )]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-54" x="328" y="213" width="18" height="18" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" pdfFontName="arial.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[( $F{TICKET}.getCustomer().getTaxID().length() > 6 ? $F{TICKET}.getCustomer().getTaxID().substring( 6, 7 ) : "------" )]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-59" x="439" y="213" width="18" height="18" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" pdfFontName="arial.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[( $F{TICKET}.getCustomer().getTaxID().length() > 12 ? $F{TICKET}.getCustomer().getTaxID().substring( 12, 13 ) : "------" )]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-61" x="461" y="213" width="18" height="18" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" pdfFontName="arial.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[( $F{TICKET}.getCustomer().getTaxID().length() > 13 ? $F{TICKET}.getCustomer().getTaxID().substring( 13, 14 ) : "------" )]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-48" x="221" y="213" width="18" height="18" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" pdfFontName="arial.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[( $F{TICKET}.getCustomer().getTaxID().length() > 0 ? $F{TICKET}.getCustomer().getTaxID().substring( 0, 1 ) : "------" )]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-52" x="294" y="213" width="18" height="18" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" pdfFontName="arial.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[( $F{TICKET}.getCustomer().getTaxID().length() > 4 ? $F{TICKET}.getCustomer().getTaxID().substring( 4, 5 ) : "------" )]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-56" x="362" y="213" width="18" height="18" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" pdfFontName="arial.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[( $F{TICKET}.getCustomer().getTaxID().length() > 8 ? $F{TICKET}.getCustomer().getTaxID().substring( 8, 9 ) : "------" )]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-57" x="405" y="213" width="18" height="18" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" pdfFontName="arial.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[( $F{TICKET}.getCustomer().getTaxID().length() > 10 ? $F{TICKET}.getCustomer().getTaxID().substring( 10, 11 ) : "------" )]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-55" x="345" y="213" width="18" height="18" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" pdfFontName="arial.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[( $F{TICKET}.getCustomer().getTaxID().length() > 7 ? $F{TICKET}.getCustomer().getTaxID().substring( 7, 8 ) : "------" )]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-60" x="384" y="213" width="18" height="18" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" pdfFontName="arial.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[( $F{TICKET}.getCustomer().getTaxID().length() > 9 ? $F{TICKET}.getCustomer().getTaxID().substring( 9, 10 ) : "------" )]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-50" x="260" y="213" width="18" height="18" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" pdfFontName="arial.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[( $F{TICKET}.getCustomer().getTaxID().length() > 2 ? $F{TICKET}.getCustomer().getTaxID().substring( 2, 3 ) : "------" )]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-49" x="239" y="213" width="18" height="18" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" pdfFontName="arial.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[( $F{TICKET}.getCustomer().getTaxID().length() > 1 ? $F{TICKET}.getCustomer().getTaxID().substring( 1, 2 ) : "------" )]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-51" x="277" y="213" width="18" height="18" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" pdfFontName="arial.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[( $F{TICKET}.getCustomer().getTaxID().length() > 3 ? $F{TICKET}.getCustomer().getTaxID().substring( 3, 4 ) : "------" )]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-3" x="156" y="47" width="26" height="18"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{TICKET}.printDay()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-3" x="221" y="47" width="26" height="18"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{TICKET}.printMonth()]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-3" x="279" y="47" width="37" height="18"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{TICKET}.printYear()]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="120">
+			<subreport isUsingCache="true">
+				<reportElement key="subreport-1" stretchType="RelativeToBandHeight" x="0" y="0" width="535" height="20"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource(
+$F{TICKET}.getLines()
+)]]></dataSourceExpression>
+				<subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[JasperCompileManager.compileReport(
+net.sf.jasperreports.engine.xml.JRXmlLoader.load(getClass().getResourceAsStream(
+"/vn/smartbiz/reports/redinvoice_lines.jrxml"
+))
+)]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,32 @@
+report = new vn.smartbiz.pos.reports.PanelReportBean();
+
+report.setTitleKey("Menu.Logi");
+report.setReport("/vn/smartbiz/reports/logi");
+report.setResourceBundle("vn/smartbiz/reports/logi_messages");
+
+report.setSentence("SELECT " +
+                "TICKETS.TICKETID AS TICKET_NO, " +
+                "RECEIPTS.DATENEW AS TICKET_DATE, " +
+				"PAYMENTS.TOTAL AS MONEY, " +
+				"CUSTOMERS.NAME AS CUSTOMER, " +
+				"PAYMENTS.PAYMENT AS PAYMENT " +
+                "FROM RECEIPTS " +
+                "LEFT JOIN TICKETS ON RECEIPTS.ID = TICKETS.ID " +
+				"LEFT JOIN PAYMENTS ON RECEIPTS.ID = PAYMENTS.RECEIPT " +
+				"LEFT JOIN CUSTOMERS ON TICKETS.CUSTOMER = CUSTOMERS.ID " +
+                "WHERE ?(QBF_FILTER) " +
+                "AND TICKETS.TICKETTYPE < 3 " +
+                "ORDER BY RECEIPTS.DATENEW");
+report.addParameter("RECEIPTS.DATENEW");
+report.addParameter("RECEIPTS.DATENEW");
+paramdates = new vn.smartbiz.pos.reports.JParamsDatesInterval();
+paramdates.setStartDate(vn.smartbiz.beans.DateUtils.getToday());
+report.addQBFFilter(paramdates);
+
+report.addField("TICKET_NO", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("TICKET_DATE", vn.smartbiz.data.loader.Datas.TIMESTAMP);
+report.addField("MONEY", vn.smartbiz.data.loader.Datas.DOUBLE);
+report.addField("CUSTOMER", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("PAYMENT", vn.smartbiz.data.loader.Datas.STRING);
+
+return report;

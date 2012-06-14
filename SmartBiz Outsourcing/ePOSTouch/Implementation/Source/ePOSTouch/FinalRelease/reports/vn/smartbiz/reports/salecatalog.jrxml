@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="salecatalog"
+		 columnCount="3"
+		 printOrder="Vertical"
+		 orientation="Portrait"
+		 pageWidth="595"
+		 pageHeight="842"
+		 columnWidth="178"
+		 columnSpacing="0"
+		 leftMargin="30"
+		 rightMargin="30"
+		 topMargin="20"
+		 bottomMargin="20"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.zoom" value="1.0" />
+	<property name="ireport.x" value="0" />
+	<property name="ireport.y" value="0" />
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<parameter name="TAXESLOGIC" isForPrompting="false" class="vn.smartbiz.pos.sales.TaxesLogic"/>
+	<queryString><![CDATA[SELECT
+  PRODUCTS.ID,
+  PRODUCTS.REFERENCE,
+  PRODUCTS.CODE,
+  PRODUCTS.NAME,
+  PRODUCTS.PRICESELL,
+  PRODUCTS.IMAGE,
+  TC.ID AS TAXCAT,
+  CATEGORIES.NAME AS CATEGORYNAME
+FROM
+  PRODUCTS LEFT OUTER JOIN CATEGORIES ON
+  PRODUCTS.CATEGORY = CATEGORIES.ID LEFT OUTER JOIN TAXCATEGORIES TC ON
+  PRODUCTS.TAXCAT = TC.ID
+ORDER BY CATEGORIES.NAME, PRODUCTS.NAME]]></queryString>
+
+	<field name="ID" class="java.lang.String"/>
+	<field name="REFERENCE" class="java.lang.String"/>
+	<field name="CODE" class="java.lang.String"/>
+	<field name="NAME" class="java.lang.String"/>
+	<field name="PRICESELL" class="java.lang.Double"/>
+	<field name="IMAGE" class="java.lang.Object"/>
+	<field name="TAXCAT" class="java.lang.String"/>
+	<field name="CATEGORYNAME" class="java.lang.String"/>
+
+
+		<group  name="CATEGORYNAME" isStartNewPage="true" isReprintHeaderOnEachPage="true" >
+			<groupExpression><![CDATA[$F{CATEGORYNAME}]]></groupExpression>
+			<groupHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupHeader>
+			<groupFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+			</groupFooter>
+		</group>
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</title>
+		<pageHeader>
+			<band height="49"  isSplitAllowed="true" >
+				<image  scaleImage="Clip" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="2"
+						y="2"
+						width="132"
+						height="32"
+						key="image-2"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<graphicElement stretchType="NoStretch"/>
+					<imageExpression class="java.awt.Image"><![CDATA[vn.smartbiz.data.loader.ImageUtils.readImageFromResource("/vn/smartbiz/images/poweredby.png")]]></imageExpression>
+				</image>
+				<rectangle radius="5" >
+					<reportElement
+						mode="Opaque"
+						x="140"
+						y="0"
+						width="395"
+						height="36"
+						forecolor="#000000"
+						backcolor="#0070C5"
+						key="rectangle-4"/>
+					<graphicElement stretchType="NoStretch" pen="None" fill="Solid" />
+				</rectangle>
+				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Transparent"
+						x="144"
+						y="0"
+						width="375"
+						height="36"
+						forecolor="#FFFFFF"
+						backcolor="#FFFFFF"
+						key="textField-11"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" leftPadding="2" rightBorder="None" rightBorderColor="#000000" rightPadding="2" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+						<font fontName="Arial" pdfFontName="arialbd.ttf" size="18" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$R{label.title} + " - " + $F{CATEGORYNAME}]]></textFieldExpression>
+				</textField>
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="174"  isSplitAllowed="true" >
+				<rectangle radius="4" >
+					<reportElement
+						mode="Opaque"
+						x="10"
+						y="5"
+						width="159"
+						height="158"
+						key="rectangle-3"/>
+					<graphicElement stretchType="NoStretch"/>
+				</rectangle>
+				<image  scaleImage="RetainShape" vAlign="Middle" hAlign="Left" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Transparent"
+						x="13"
+						y="42"
+						width="87"
+						height="95"
+						key="image-1"
+						isRemoveLineWhenBlank="true"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<graphicElement stretchType="NoStretch"/>
+					<imageExpression class="java.awt.Image"><![CDATA[$F{IMAGE}]]></imageExpression>
+				</image>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="13"
+						y="7"
+						width="150"
+						height="20"
+						key="textField-2"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Arial" pdfFontName="Helvetica" size="14" isBold="true" isPdfEmbedded ="false" pdfEncoding ="Identity-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{NAME}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="13"
+						y="27"
+						width="150"
+						height="15"
+						key="textField-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement>
+						<font fontName="Arial" pdfFontName="arial.ttf" isPdfEmbedded ="false" pdfEncoding ="Identity-H"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{CATEGORYNAME}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						mode="Transparent"
+						x="13"
+						y="137"
+						width="150"
+						height="27"
+						key="textField-5"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Bottom" rotation="None">
+						<font fontName="Arial" pdfFontName="Helvetica" size="20" isBold="true" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Identity-H" isStrikeThrough="false" />
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[vn.smartbiz.format.Formats.CURRENCY.formatValue(new Double($F{PRICESELL}.doubleValue()))]]></textFieldExpression>
+				</textField>
+				<image  scaleImage="RetainShape" vAlign="Middle" hAlign="Center" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="100"
+						y="42"
+						width="60"
+						height="95"
+						key="barcode-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<graphicElement stretchType="NoStretch" fill="Solid" />
+					<imageExpression class="java.awt.Image"><![CDATA[vn.smartbiz.pos.util.BarcodeImage.getBarcodeEAN13($F{CODE})]]></imageExpression>
+				</image>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="51"  isSplitAllowed="true" >
+				<line direction="TopDown">
+					<reportElement
+						mode="Opaque"
+						x="0"
+						y="6"
+						width="535"
+						height="1"
+						forecolor="#000000"
+						backcolor="#FFFFFF"
+						key="line-1"/>
+					<graphicElement stretchType="NoStretch" fill="Solid" />
+				</line>
+				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="400"
+						y="26"
+						width="95"
+						height="14"
+						key="textField-9"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="Helvetica" size="8" pdfEncoding ="Cp1252"/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["Page " + "\u0020" + $V{PAGE_NUMBER} + "\u0020" + " of "]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="" isBlankWhenNull="false" evaluationTime="Report" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="496"
+						y="26"
+						width="36"
+						height="14"
+						forecolor="#000000"
+						backcolor="#FFFFFF"
+						key="textField-10"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" lineSpacing="Single">
+						<font fontName="Arial" pdfFontName="Helvetica" size="8" isBold="false" isItalic="false" isUnderline="false" isPdfEmbedded ="false" pdfEncoding ="Cp1252" isStrikeThrough="false" />
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA["\u0020" + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="26"
+						width="177"
+						height="14"
+						key="staticText-1"/>
+					<box topBorder="None" topBorderColor="#000000" leftBorder="None" leftBorderColor="#000000" rightBorder="None" rightBorderColor="#000000" bottomBorder="None" bottomBorderColor="#000000"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" pdfFontName="arial.ttf" size="8" isBold="true" isUnderline="false" pdfEncoding ="Identity-H"/>
+					</textElement>
+				<text><![CDATA[Smart Point-Of-Sales (www.sunflowervn.vn)]]></text>
+				</staticText>
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>

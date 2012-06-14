@@ -1,0 +1,35 @@
+//    SmartBiz POS is a point of sales application designed for touch screens.
+//    Copyright (C) 2007-2009 SmartBiz, S.L.
+//    http://www.openbravo.com/product/pos
+//
+//    This file is part of SmartBiz POS.
+//
+//    SmartBiz POS is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    SmartBiz POS is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with SmartBiz POS.  If not, see <http://www.gnu.org/licenses/>.
+
+report = new vn.smartbiz.pos.reports.PanelReportBean();
+
+report.setTitleKey("Menu.UsersReport");
+report.setReport("/vn/smartbiz/reports/people");
+report.setResourceBundle("vn/smartbiz/reports/people_messages");
+
+report.setSentence("SELECT PEOPLE.ID, PEOPLE.NAME, PEOPLE.CARD, ROLES.NAME AS ROLE, PEOPLE.IMAGE " +
+                   "FROM PEOPLE, ROLES WHERE PEOPLE.ROLE = ROLES.ID AND PEOPLE.VISIBLE = " + app.getSession().DB.TRUE());
+
+report.addField("ID", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("NAME", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("CARD", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("ROLE", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("IMAGE", vn.smartbiz.data.loader.Datas.IMAGE);
+
+report;

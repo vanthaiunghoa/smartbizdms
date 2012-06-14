@@ -1,0 +1,73 @@
+//    SmartBiz POS is a point of sales application designed for touch screens.
+//    Copyright (C) 2009 SmartBiz, S.L.
+//    http://www.openbravo.com/product/pos
+//
+//    This file is part of SmartBiz POS.
+//
+//    SmartBiz POS is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    SmartBiz POS is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with SmartBiz POS.  If not, see <http://www.gnu.org/licenses/>.
+
+report = new vn.smartbiz.pos.reports.PanelReportBean();
+
+report.setTitleKey("Menu.InventoryDiffDetail");
+report.setReport("/vn/smartbiz/reports/inventorydiffdetailserial");
+report.setResourceBundle("vn/smartbiz/reports/inventorydiffdetailserial_messages");
+
+    report.setSentence("SELECT " +
+		    "LOCATIONS.ID AS LOCATIONID, LOCATIONS.NAME AS LOCATIONNAME, " +
+		    "PRODUCTS.CATEGORY, CATEGORIES.NAME AS CATEGORYNAME, " +
+                    "PRODUCTS.REFERENCE, PRODUCTS.NAME, " +
+		    "PRODUCTINSTANCE.IMEI AS SERIAL, "+
+		    "STOCKDIARY.DATENEW AS DATENEW, " +
+                    "PRODUCTINSTANCE.PRICEBUY AS PRICEBUY, " +
+                    "PRODUCTINSTANCE.PRICESELL AS PRICESELL, " +		                      
+		    "STOCKDIARY.REASON AS REASON, " +
+                    "PRODUCTINSTANCE.WARRANTYPERIOD AS WARRANTYPERIOD, " +
+                    "((CASE WHEN TICKETLINES.DISCOUNTTYPE=0 THEN TICKETLINES.PRICE*(1-TICKETLINES.DISCOUNT/100) ELSE TICKETLINES.PRICE-TICKETLINES.DISCOUNT END)*(1-TICKETS.DISCOUNT/100)*(1+TAXES.RATE))AS TICKETLINES_PRICE " +
+                    "FROM STOCKDIARY " +
+                    "JOIN LOCATIONS ON STOCKDIARY.LOCATION = LOCATIONS.ID " +                    
+                    "JOIN PRODUCTINSTANCE ON STOCKDIARY.PRODUCT = PRODUCTINSTANCE.PRODUCT_ID "+
+                    "JOIN PRODUCTS ON PRODUCTS.ID = STOCKDIARY.PRODUCT " +
+                    "LEFT OUTER JOIN CATEGORIES ON PRODUCTS.CATEGORY = CATEGORIES.ID, " +
+                    "TICKETLINES " +
+                    "LEFT JOIN TICKETS ON TICKETLINES.TICKET = TICKETS.ID " +
+                    "LEFT JOIN TAXES ON TICKETLINES.TAXID = TAXES.ID " +
+                    "WHERE ?(QBF_FILTER) AND STOCKDIARY.TICKET = TICKETLINES.TICKET AND TICKETLINES.LINE=STOCKDIARY.LINE AND TICKETLINES.PRODUCT = STOCKDIARY.PRODUCT AND find_in_set(productinstance.imei, TICKETLINES.serialnumbers) > 0 " +
+                    "GROUP BY LOCATIONS.ID, LOCATIONS.NAME, PRODUCTS.CATEGORY, CATEGORIES.NAME, " +
+		    "PRODUCTS.REFERENCE, PRODUCTS.NAME, " +
+		    "PRODUCTINSTANCE.IMEI, STOCKDIARY.DATENEW, PRODUCTINSTANCE.PRICEBUY, PRODUCTINSTANCE.PRICESELL, STOCKDIARY.REASON, PRODUCTINSTANCE.WARRANTYPERIOD, TICKETLINES_PRICE " +
+                    "ORDER BY LOCATIONS.ID, CATEGORIES.NAME, PRODUCTS.NAME, STOCKDIARY.DATENEW, PRODUCTINSTANCE.IMEI ");
+report.addParameter("STOCKDIARY.DATENEW");
+report.addParameter("STOCKDIARY.DATENEW");
+report.addQBFFilter(new vn.smartbiz.pos.reports.JParamsDatesInterval());
+report.addParameter("LOCATIONS.ID");
+report.addQBFFilter(new vn.smartbiz.pos.reports.JParamsLocationWithFirst());
+report.addParameter("STOCKDIARY.REASON");
+report.addQBFFilter(new vn.smartbiz.pos.reports.JParamsReason());
+
+report.addField("LOCATIONID", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("LOCATIONNAME", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("CATEGORY", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("CATEGORYNAME", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("REFERENCE", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("NAME", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("SERIAL", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("DATENEW", vn.smartbiz.data.loader.Datas.TIMESTAMP);
+report.addField("PRICEBUY", vn.smartbiz.data.loader.Datas.DOUBLE);
+report.addField("PRICESELL", vn.smartbiz.data.loader.Datas.DOUBLE);
+report.addField("REASON", vn.smartbiz.data.loader.Datas.INT);
+report.addField("WARRANTYPERIOD", vn.smartbiz.data.loader.Datas.INT);
+report.addField("TICKETLINES_PRICE", vn.smartbiz.data.loader.Datas.DOUBLE);
+
+report;
+

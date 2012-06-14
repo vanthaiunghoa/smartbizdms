@@ -1,0 +1,69 @@
+//    SmartBiz POS is a point of sales application designed for touch screens.
+//    Copyright (C) 2009 SmartBiz, S.L.
+//    http://www.openbravo.com/product/pos
+//
+//    This file is part of SmartBiz POS.
+//
+//    SmartBiz POS is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    SmartBiz POS is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with SmartBiz POS.  If not, see <http://www.gnu.org/licenses/>.
+
+report = new vn.smartbiz.pos.reports.PanelReportBean();
+
+report.setTitleKey("Menu.InventoryDiffDetail");
+report.setReport("/vn/smartbiz/reports/inventorydiffdetail");
+report.setResourceBundle("vn/smartbiz/reports/inventorydiffdetail_messages");
+
+report.setSentence("SELECT " +
+                "LOCATIONS.ID AS LOCATIONID, LOCATIONS.NAME AS LOCATIONNAME, " +
+                "PRODUCTS.REFERENCE, PRODUCTS.NAME, " +
+                "STOCKDIARY.ATTRIBUTESETINSTANCE_ID, ATTRIBUTESETINSTANCE.DESCRIPTION, " +
+                "PRODUCTS.CATEGORY, CATEGORIES.NAME AS CATEGORYNAME, " +
+                "SUM(CASE WHEN STOCKDIARY.UNITS <0 THEN STOCKDIARY.UNITS ELSE 0 END) AS UNITSOUT, " +
+                "SUM(CASE WHEN STOCKDIARY.UNITS <0 THEN STOCKDIARY.UNITS * STOCKDIARY.PRICE ELSE 0 END) AS TOTALOUT, " +
+                "SUM(CASE WHEN STOCKDIARY.UNITS >=0 THEN STOCKDIARY.UNITS ELSE 0 END) AS UNITSIN, " +
+                "SUM(CASE WHEN STOCKDIARY.UNITS >=0 THEN STOCKDIARY.UNITS * STOCKDIARY.PRICE ELSE 0 END) AS TOTALIN, " +
+                "SUM(STOCKDIARY.UNITS) AS UNITSDIFF, " +
+                "SUM(STOCKDIARY.UNITS * STOCKDIARY.PRICE) AS TOTALDIFF " +
+                "FROM STOCKDIARY " +
+                "JOIN LOCATIONS ON STOCKDIARY.LOCATION = LOCATIONS.ID " +
+                "JOIN PRODUCTS ON PRODUCTS.ID = STOCKDIARY.PRODUCT " +
+                "LEFT OUTER JOIN CATEGORIES ON PRODUCTS.CATEGORY = CATEGORIES.ID " +
+                "LEFT OUTER JOIN ATTRIBUTESETINSTANCE ON STOCKDIARY.ATTRIBUTESETINSTANCE_ID = ATTRIBUTESETINSTANCE.ID " +
+                "WHERE ?(QBF_FILTER) " +
+                "GROUP BY LOCATIONS.ID, LOCATIONS.NAME, PRODUCTS.REFERENCE, PRODUCTS.NAME, PRODUCTS.CATEGORY, CATEGORIES.NAME, STOCKDIARY.ATTRIBUTESETINSTANCE_ID, ATTRIBUTESETINSTANCE.DESCRIPTION " +
+                "ORDER BY LOCATIONS.ID, CATEGORIES.NAME, PRODUCTS.NAME");
+report.addParameter("STOCKDIARY.DATENEW");
+report.addParameter("STOCKDIARY.DATENEW");
+report.addQBFFilter(new vn.smartbiz.pos.reports.JParamsDatesInterval());
+report.addParameter("LOCATIONS.ID");
+report.addQBFFilter(new vn.smartbiz.pos.reports.JParamsLocationWithFirst());
+report.addParameter("STOCKDIARY.REASON");
+report.addQBFFilter(new vn.smartbiz.pos.reports.JParamsReason());
+
+report.addField("LOCATIONID", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("LOCATIONNAME", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("REFERENCE", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("NAME", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("ATTINSTANCEID", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("ATTINSTANCEDESC", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("CATEGORY", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("CATEGORYNAME", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("UNITSOUT", vn.smartbiz.data.loader.Datas.DOUBLE);
+report.addField("TOTALOUT", vn.smartbiz.data.loader.Datas.DOUBLE);
+report.addField("UNITSIN", vn.smartbiz.data.loader.Datas.DOUBLE);
+report.addField("TOTALIN", vn.smartbiz.data.loader.Datas.DOUBLE);
+report.addField("UNITSDIFF", vn.smartbiz.data.loader.Datas.DOUBLE);
+report.addField("TOTALDIFF", vn.smartbiz.data.loader.Datas.DOUBLE);
+
+report;
+

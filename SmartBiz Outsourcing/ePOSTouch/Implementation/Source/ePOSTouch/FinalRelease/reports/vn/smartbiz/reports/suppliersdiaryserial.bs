@@ -1,0 +1,60 @@
+//    SmartBiz POS is a point of sales application designed for touch screens.
+//    Copyright (C) 2007-2009 SmartBiz, S.L.
+//    http://www.openbravo.com/product/pos
+//
+//    This file is part of SmartBiz POS.
+//
+//    SmartBiz POS is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    SmartBiz POS is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with SmartBiz POS.  If not, see <http://www.gnu.org/licenses/>.
+
+report = new vn.smartbiz.pos.reports.PanelReportBean();
+
+report.setTitleKey("Menu.SuppliersDiarySerial");
+report.setReport("/vn/smartbiz/reports/suppliersdiaryserial");
+report.setResourceBundle("vn/smartbiz/reports/suppliersdiaryserial_messages");
+
+report.setSentence("SELECT DISTINCT  DATENEW, TICKETID, PAYMENT, TOTAL, TAXID, NAME,  SERIAL, PRODUCTS_NAME, TICKETLINES_PRICE " +
+            " FROM " +
+            "(SELECT RECEIPTS.DATENEW, TICKETS.TICKETID, PAYMENTS.PAYMENT, PAYMENTS.TOTAL, SUPPLIERS.TAXID, SUPPLIERS.NAME, PRODUCTINSTANCE.IMEI AS SERIAL, PRODUCTS.NAME AS PRODUCTS_NAME, PRODUCTINSTANCE.PRICEBUY AS TICKETLINES_PRICE " +
+            "FROM TICKETS, TICKETLINES,RECEIPTS, PAYMENTS ,SUPPLIERS , PRODUCTS, PRODUCTINSTANCE " +
+            "WHERE TICKETLINES.PRODUCT = PRODUCTS.ID AND TICKETLINES.TICKET = TICKETS.ID AND find_in_set(productinstance.imei, ticketlines.serialnumbers) > 0 AND RECEIPTS.ID = TICKETS.ID AND RECEIPTS.ID = PAYMENTS.RECEIPT " +
+            "AND TICKETS.CUSTOMER = SUPPLIERS.ID " + " AND PAYMENTS.PAYMENT = 'debt' " +
+	    "AND TICKETS.TICKETTYPE >= 3 " +
+            " union " +
+            " SELECT RECEIPTS.DATENEW, TICKETS.TICKETID, PAYMENTS.PAYMENT, PAYMENTS.TOTAL, SUPPLIERS.TAXID, SUPPLIERS.NAME, '' as  serial, '' as products_name, PAYMENTS.TOTAL AS TICKETLINES_PRICE " +
+             "    FROM RECEIPTS, TICKETS, SUPPLIERS, PAYMENTS WHERE RECEIPTS.ID = TICKETS.ID AND RECEIPTS.ID = PAYMENTS.RECEIPT " +
+              "   AND TICKETS.CUSTOMER = SUPPLIERS.ID AND PAYMENTS.PAYMENT = 'debtpaid' " +
+		" AND TICKETS.TICKETTYPE >= 3)" +
+                   "AS SUPPLIERSDIRARY " +
+                   " WHERE (1=1) AND ?(QBF_FILTER) " +
+                    "ORDER BY NAME, DATENEW, PRODUCTS_NAME ");
+
+report.addParameter("SUPPLIERS.ID");
+report.addParameter("NAME");
+report.addQBFFilter(new vn.smartbiz.pos.reports.JParamsSupplier());
+
+report.addParameter("DATENEW");
+report.addParameter("DATENEW");
+report.addQBFFilter(new vn.smartbiz.pos.reports.JParamsDatesInterval());
+
+report.addField("DATENEW", vn.smartbiz.data.loader.Datas.TIMESTAMP);
+report.addField("TICKETID", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("PAYMENT", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("TOTAL", vn.smartbiz.data.loader.Datas.DOUBLE);
+report.addField("TAXID", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("NAME", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("SERIAL", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("PRODUCTS_NAME", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("TICKETLINES_PRICE", vn.smartbiz.data.loader.Datas.DOUBLE);
+report;
+

@@ -1,0 +1,248 @@
+@CHARSET "ISO-8859-1";
+body {
+    background: none repeat scroll 0 0 #88B0EC;
+    color: #000000;
+    font: 62.5% Tahoma,Arial,Verdana,Helvetica,sans-serif,"Trebuchet MS";
+    margin: 0;
+}
+#wrapper {
+    background:#88B0EC;
+    margin: 0 auto;
+    padding:0;
+    position: relative;
+    width: 1040px;
+}
+#body_left {		
+	width:232px;
+	height:750px;
+	display:block;
+	position:relative;
+	top:0;
+	left:0;
+	background:#B1D4FA;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+}
+
+#body_main {
+	text-align:center;
+	width:798px;
+	height:750px;
+	background-color:#FFFFFF;	
+	margin-left: 10px;
+	position: absolute;
+	left:232px;
+	top:0;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+}
+
+/******************************Left Column**********************/
+.LeftColumn .jcarousel-list {
+    margin: 2px 0 1px;
+}
+.LeftColumn #tittle{
+	color:white;
+	font-family: tahoma;
+	font-size: 28px;
+	position: relative;
+	left: 70px;
+	top:15px;
+	margin-bottom: 35px;
+	}
+.MiddleText[class] {
+    display: table-cell;
+    position: static;
+    vertical-align: middle;
+}
+.OuterText[class] {
+    display: table;
+    position: static;
+}
+.OuterText {
+    height: 48px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+.ListStyle08 li .Item01 .InnerText {
+    padding: 0 20px 0 57px;
+}
+ul.DefaultList, ul.DefaultList li {
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+
+
+.ListStyle08 li {
+    font-size: 1.5em;
+}
+
+.lavaLampTopStyle {
+    position: relative;
+}
+
+.ListStyle08 {
+    background: url("../images/line.gif") repeat-y scroll 5px top transparent;
+}
+
+.jcarousel-list {
+    left: 0;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    top: 0;
+    z-index: 1;
+}
+
+
+.lavaLampTopStyle li {
+    position: relative;
+    z-index: 1;
+}
+
+.ListStyle08 li {
+    clear: both;
+    float: left;
+    font-size: 1.5em;
+    padding: 0 0 5px 4px !important;
+    z-index: 3;
+}
+
+.jcarousel-list li, .jcarousel-item {
+    float: left;
+    height: 48px;
+    list-style: none outside none;
+    width: 232px;
+}
+
+.backLava {
+    background: url("../images/bg-01.png") no-repeat scroll 1px top transparent !important;
+}
+
+.ListStyle08 li.selectedLava {
+    background: url("../images/bg-01.png") no-repeat scroll 1px top transparent;
+}
+.jcarousel-item-vertical {
+    position: relative;
+    z-index: 1;
+}
+.jcarousel-item {
+    border-right: 1px solid #B1D4FA;
+    height: 48px;
+    width: 232px;
+}
+.ListStyle08 li .Item01 {
+    position: relative;
+    z-index: 1;
+}
+
+.ListStyle08 li.selectedLava a{
+    color: #FFFFFF;
+}
+.ListStyle08 li:hover a {
+	color: #FF7E00;
+}
+.ListStyle08 li a {
+    color: #262626;
+    font-weight: bolder;
+    line-height: 19px;
+}
+
+a:link, a:visited {
+    color: #FF7E00;
+    text-decoration: none;
+}
+a {
+    outline: medium none;
+}
+.ListStyle08 li.selectedLava span {
+    display: block;
+}
+
+.ListStyle08 li.selectedLava span {
+    display: block;
+}
+
+.jcarousel-item img {
+    display: block;
+}
+
+.ListStyle08 li img {
+    left: 13px;
+    position: absolute;
+    top: 9px;
+    z-index: 2;
+}
+
+img {
+    border: medium none;
+}
+
+.Calendar{ background: url(../images/calendar.png) no-repeat 0px 1px;line-height:normal !important;}
+/*---------------------------------button----------------------------------------*/
+#bigbuttons {
+float:left;
+margin-left: 110px;
+}
+ 
+#bigbuttons li{
+list-style: none;
+float:left;
+margin-left: 10px;
+ }
+#bigbuttons li a
+	{
+	background:url(../images/over.png);
+	width: 155px;
+	height: 37px;
+	display: block; 
+	}
+
+#bigbuttons li a:hover{
+	background-image: url(../images/hover.png);
+	width: 155px;
+	height: 37px;
+	border: 0;
+}
+
+.gallery {
+display:block;
+width: 157px;
+height: 34px;
+font-size: 20px;
+font-family: tahoma;
+font-weight: 2000px;
+padding: 10px;
+padding-top:2px;
+color: #FFFFFF;
+}
+
+#search {
+	position:relative;	
+	display:block;
+	top:20px;
+	left: 138px;
+	padding:20px;
+	margin-bottom: 20px;
+	width: 490px;
+}
+#button{
+	float: left;
+	margin-left: 400px;
+}
+#button span{
+	background-color:silver;	
+	border-left:2px solid #666;
+    border-top:4px solid activeborder;
+    border-right:2px solid #666;
+}
+#id{
+	background-color:silver;
+	color:maroon;
+	}
+.vide {
+clear:both;
+}

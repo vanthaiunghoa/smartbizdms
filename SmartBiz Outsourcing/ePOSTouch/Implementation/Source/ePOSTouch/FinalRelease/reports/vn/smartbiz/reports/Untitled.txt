@@ -1,0 +1,10 @@
+arialbd.ttf
+
+
+new Boolean($V{COLUMN_COUNT}.intValue()%2==0)
+#F3F3F3
+
+
+
+#0070C5
+

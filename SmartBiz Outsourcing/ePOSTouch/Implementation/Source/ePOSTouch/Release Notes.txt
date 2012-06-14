@@ -1,0 +1,43 @@
+===================================
+A. ePOSTouch - Version: 2.0.0 - Release Notes
+     Date:    08-Jul-2011
+     Author: Thanh Nguyen
+=================================== 
+This file contains information about the delivery of the ePOSTouch.
+
+====================================
+B. Delivery:
+====================================
+1. Display @copyright: www.smartbiz.vn to ePOSTouch
+2. English data: product category + product + price
+3. 1st-layout
+4. Industry: 
+    Restaurant-Table-Services 
+    Restaurant-Quick-Services
+    ePOSTouch
+====================================
+C. Suggestion
+====================================
+1. Using nail or spa sample data (product category, product, price) from A.Son.
+2. Review biz-logic of 1st-layout: matched to the existing POS biz-rules.
+
+====================================
+
+D. Assumption
+====================================
+
+====================================
+E. Pending/On-going 
+====================================
+
+====================================
+F. Known Bugs 
+====================================
+1. 
+
+
+
+====================================
+G. Items need to be reviewed by A.Son
+====================================
+    

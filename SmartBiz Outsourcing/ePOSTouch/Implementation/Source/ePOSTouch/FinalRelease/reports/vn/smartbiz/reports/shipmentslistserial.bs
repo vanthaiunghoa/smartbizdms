@@ -1,0 +1,43 @@
+report = new vn.smartbiz.pos.reports.PanelReportBean();
+
+report.setTitleKey("Menu.InventoryListDetail");
+report.setReport("/vn/smartbiz/reports/shipmentslistserial");
+report.setResourceBundle("vn/smartbiz/reports/shipmentslistserial_messages");
+
+report.setSentence("SELECT  " +
+                    "CUSTOMERS.NAME AS CUSTOMERS_NAME, " +
+		    "PRODUCTS.NAME AS PRODUCTS_NAME, " +
+		    "PRODUCTINSTANCE.IMEI AS SERIAL, " +
+		    "STOCKDIARY.DATENEW AS DATENEW,  " +
+                    "STOCKDIARY.REASON AS REASON  " +
+                    "FROM TICKETLINES, TICKETS " +
+                    "LEFT OUTER JOIN CUSTOMERS ON CUSTOMERS.ID = TICKETS.CUSTOMER," +
+                    "STOCKDIARY " +
+                    "JOIN LOCATIONS ON STOCKDIARY.LOCATION = LOCATIONS.ID " +
+                    "JOIN PRODUCTINSTANCE ON STOCKDIARY.PRODUCT = PRODUCTINSTANCE.PRODUCT_ID " +
+                    "JOIN PRODUCTS ON PRODUCTS.ID = STOCKDIARY.PRODUCT " +
+                    "WHERE ?(QBF_FILTER) " +
+                    "AND TICKETLINES.PRODUCT = PRODUCTS.ID AND TICKETS.ID = TICKETLINES.TICKET and TICKETLINES.TICKET = STOCKDIARY.TICKET and TICKETLINES.LINE = STOCKDIARY.LINE " +
+                    "AND (STOCKDIARY.REASON='-1' or  STOCKDIARY.REASON='-2' or  STOCKDIARY.REASON='-4') " +
+                    "AND find_in_set(PRODUCTINSTANCE.IMEI, TICKETLINES.SERIALNUMBERS) > 0 " +
+       "GROUP BY  PRODUCTS.NAME, PRODUCTINSTANCE.IMEI, STOCKDIARY.DATENEW " +
+       "ORDER BY STOCKDIARY.DATENEW DESC, PRODUCTS.NAME, PRODUCTINSTANCE.IMEI");
+
+report.addParameter("STOCKDIARY.DATENEW");
+report.addParameter("STOCKDIARY.DATENEW");
+report.addQBFFilter(new vn.smartbiz.pos.reports.JParamsDatesInterval());
+
+report.addParameter("CUSTOMERS.ID");
+report.addParameter("CUSTOMERS.NAME");
+report.addQBFFilter(new vn.smartbiz.pos.reports.JParamsCustomer());
+
+report.addParameter("PRODUCTINSTANCE.IMEI");
+report.addQBFFilter(new vn.smartbiz.pos.reports.JParamsText("IMEI", vn.smartbiz.format.Formats.STRING, vn.smartbiz.data.loader.Datas.STRING));
+
+report.addField("CUSTOMERS_NAME", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("PRODUCTS_NAME", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("SERIAL", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("DATENEW", vn.smartbiz.data.loader.Datas.TIMESTAMP);
+report.addField("REASON", vn.smartbiz.data.loader.Datas.INT);
+
+report;

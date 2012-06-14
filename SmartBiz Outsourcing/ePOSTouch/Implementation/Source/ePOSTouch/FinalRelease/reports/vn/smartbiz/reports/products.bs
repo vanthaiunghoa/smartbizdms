@@ -1,0 +1,49 @@
+//    SmartBiz POS is a point of sales application designed for touch screens.
+//    Copyright (C) 2007-2009 SmartBiz, S.L.
+//    http://www.openbravo.com/product/pos
+//
+//    This file is part of SmartBiz POS.
+//
+//    SmartBiz POS is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    SmartBiz POS is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with SmartBiz POS.  If not, see <http://www.gnu.org/licenses/>.
+
+report = new vn.smartbiz.pos.reports.PanelReportBean();
+
+report.setTitleKey("Menu.Products");
+report.setReport("/vn/smartbiz/reports/products");
+report.setResourceBundle("vn/smartbiz/reports/products_messages");
+
+report.setSentence("SELECT PRODUCTS.ID, PRODUCTS.REFERENCE, PRODUCTS.CODE, PRODUCTS.NAME, PRODUCTS.PRICEBUY, PRODUCTS.PRICESELL, TC.ID AS TAXCAT, TC.NAME AS TAXCATNAME, CATEGORIES.ID AS CATEGORY, CATEGORIES.NAME AS CATEGORYNAME " +
+                 "FROM PRODUCTS LEFT OUTER JOIN CATEGORIES ON PRODUCTS.CATEGORY = CATEGORIES.ID LEFT OUTER JOIN TAXCATEGORIES TC ON PRODUCTS.TAXCAT = TC.ID " +
+                 "WHERE ?(QBF_FILTER) " +
+                 "ORDER BY CATEGORIES.NAME, PRODUCTS.NAME");
+report.addParameter("PRODUCTS.NAME");
+report.addParameter("PRODUCTS.PRICEBUY");
+report.addParameter("PRODUCTS.PRICESELL");
+report.addParameter("PRODUCTS.CATEGORY");
+report.addParameter("PRODUCTS.CODE");
+report.addQBFFilter(new vn.smartbiz.pos.ticket.ProductFilter());
+
+report.addField("ID", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("REFERENCE", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("CODE", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("NAME", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("PRICEBUY", vn.smartbiz.data.loader.Datas.DOUBLE);
+report.addField("PRICESELL", vn.smartbiz.data.loader.Datas.DOUBLE);
+report.addField("TAXCAT", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("TAXCATNAME", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("CATEGORY", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("CATEGORYNAME", vn.smartbiz.data.loader.Datas.STRING);
+
+report;
+

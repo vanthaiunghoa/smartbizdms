@@ -1,0 +1,91 @@
+//    SmartBiz POS is a point of sales application designed for touch screens.
+//    Copyright (C) 2007-2009 SmartBiz, S.L.
+//    http://www.openbravo.com/product/pos
+//
+//    This file is part of SmartBiz POS.
+//
+//    SmartBiz POS is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    SmartBiz POS is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with SmartBiz POS.  If not, see <http://www.gnu.org/licenses/>.
+
+report = new vn.smartbiz.pos.reports.PanelReportBean();
+
+report.setTitleKey("Menu.TimeSeriesProduct");
+report.setReport("/vn/smartbiz/reports/timeseriesproduct");
+report.setResourceBundle("vn/smartbiz/reports/timeseriesproduct_messages");
+
+report.setSentence(
+"SELECT " +
+" CATEGORIES.NAME AS CATNAME, " +
+" PRODUCTS.NAME AS PRODUCT, " +
+" PRODUCTS.IMAGE AS PRODIMG, " +
+" PRODUCTS.REFERENCE AS REF, " +
+" PRODUCTS.CODE AS BARCODE, " +
+" PRODUCTS.PRICEBUY, " +
+" PRODUCTS.PRICESELL, " +
+" PRODUCTS.STOCKCOST, " +
+" PRODUCTS.STOCKVOLUME, " +
+" TC.ID AS TAXCAT, " +
+" TC.NAME AS TAXCATNAME, " +
+" PEOPLE.NAME AS SALER, " +
+" RECEIPTS.DATENEW AS RECEIPTDATE, " +
+" SUM(TICKETLINES.UNITS) AS TOTALUNIT " +
+"FROM " +
+" RECEIPTS LEFT JOIN TICKETS ON " +
+" RECEIPTS.ID = TICKETS.ID LEFT  JOIN TICKETLINES ON " +
+" TICKETS.ID = TICKETLINES.TICKET, " +
+" PRODUCTS LEFT  JOIN CATEGORIES ON " +
+" PRODUCTS.CATEGORY = CATEGORIES.ID LEFT  JOIN TAXCATEGORIES TC ON " +
+" PRODUCTS.TAXCAT = TC.ID, " +
+" PRODUCTS_CAT, " +
+" PEOPLE " +
+"WHERE " +
+" PRODUCTS.ID = TICKETLINES.PRODUCT AND PEOPLE.ID = TICKETS.PERSON AND PRODUCTS.ID = PRODUCTS_CAT.PRODUCT AND ?(QBF_FILTER) " +
+" AND TICKETS.TICKETTYPE < 3 " +
+" AND PEOPLE.VISIBLE = TRUE " +
+"GROUP BY " +
+" PRODUCTS.ID, " +
+" DAY(RECEIPTS.DATENEW), " +
+" PEOPLE.ID " +
+"ORDER BY " +
+" SUM(TICKETLINES.UNITS), " +
+" CATEGORIES.NAME, " +
+" PRODUCTS.NAME, " +
+" RECEIPTS.DATENEW, " +
+" PEOPLE.NAME");
+report.addParameter("RECEIPTS.DATENEW");
+report.addParameter("RECEIPTS.DATENEW");
+report.addQBFFilter(new vn.smartbiz.pos.reports.JParamsDatesInterval());
+report.addParameter("PRODUCTS.NAME");
+report.addParameter("PRODUCTS.PRICEBUY");
+report.addParameter("PRODUCTS.PRICESELL");
+report.addParameter("PRODUCTS.CATEGORY");
+report.addParameter("PRODUCTS.CODE");
+report.addQBFFilter(new vn.smartbiz.pos.ticket.ProductFilter());
+
+report.addField("CATNAME", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("PRODUCT", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("PRODIMG", vn.smartbiz.data.loader.Datas.IMAGE);
+report.addField("REF", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("BARCODE", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("PRICEBUY", vn.smartbiz.data.loader.Datas.DOUBLE);
+report.addField("PRICESELL", vn.smartbiz.data.loader.Datas.DOUBLE);
+report.addField("STOCKCOST", vn.smartbiz.data.loader.Datas.DOUBLE);
+report.addField("STOCKVOLUME", vn.smartbiz.data.loader.Datas.DOUBLE);
+report.addField("TAXCAT", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("TAXCATNAME", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("SALER", vn.smartbiz.data.loader.Datas.STRING);
+report.addField("RECEIPTDATE", vn.smartbiz.data.loader.Datas.TIMESTAMP);
+report.addField("TOTALUNIT", vn.smartbiz.data.loader.Datas.DOUBLE);
+
+report;
+
