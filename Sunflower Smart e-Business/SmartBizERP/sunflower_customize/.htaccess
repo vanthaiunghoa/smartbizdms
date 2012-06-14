@@ -1,0 +1,91 @@
+# 1.To use URL Alias you need to be running apache with mod_rewrite enabled.
+
+# 2. In your opencart directory rename htaccess.txt to .htaccess.
+
+# For any support issues please visit: http://www.opencart.com
+DirectoryIndex index.html index.php
+
+Options +FollowSymlinks
+
+# Prevent Directoy listing
+Options -Indexes
+
+# Prevent Direct Access to files
+<FilesMatch "\.(tpl|ini)">
+Order deny,allow
+Deny from all
+</FilesMatch>
+
+# SEO URL Settings
+RewriteEngine On
+#RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)\?*$ index.php?_route_=$1 [L,QSA]
+
+# This is config for local
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^smartbiz
+RewriteRule ^(.*)$ http://localhost/smartbiz/$1 [R=301,L]
+
+# This is config for smartbiz.vn
+#RewriteEngine on
+#RewriteCond %{HTTP_HOST} ^smartbiz\.vn
+#RewriteRule ^(.*)$ http://www.smartbiz.vn/$1 [R=301,L]
+
+# This is config for sunflowervn.vn
+#RewriteEngine on
+#RewriteCond %{HTTP_HOST} ^sunflowervn\.vn
+#RewriteRule ^(.*)$ http://www.sunflowervn.vn/$1 [R=301,L]
+
+
+###Start Kloxo PHP config Area
+###Please Don't edit these comments or the content in between. kloxo uses this to recognize the lines it writes to the the file. If the above line is corrupted, it may fail to recognize them, leading to multiple lines.
+<Ifmodule mod_php4.c>
+php_value error_log C:/www/smartbiz.vn.phplog
+php_value upload_max_filesize 20M
+php_value max_execution_time  30
+php_value max_input_time  60
+php_value memory_limit  320M
+php_value post_max_size  8M
+php_flag register_globals  off
+php_flag display_errors  off
+php_flag file_uploads  on
+php_flag log_errors  off
+php_flag output_buffering  off
+php_flag register_argc_argv  on
+php_flag magic_quotes_gpc   off
+php_flag magic_quotes_runtime  off
+php_flag magic_quotes_sybase  off
+php_flag mysql.allow_persistent  off
+php_flag register_long_arrays  on
+php_flag allow_url_fopen  on
+php_flag cgi.force_redirect  on
+php_flag enable_dl  on
+</Ifmodule>
+<Ifmodule mod_php5.c>
+php_value error_log C:/www/smartbiz.vn.phplog
+php_value upload_max_filesize 20M
+php_value max_execution_time  30
+php_value max_input_time  60
+php_value memory_limit  320M
+php_value post_max_size  8M
+php_flag register_globals  off
+php_flag display_errors  off
+php_flag file_uploads  on
+php_flag log_errors  off
+php_flag output_buffering  off
+php_flag register_argc_argv  on
+php_flag magic_quotes_gpc   off
+php_flag magic_quotes_runtime  off
+php_flag magic_quotes_sybase  off
+php_flag mysql.allow_persistent  off
+php_flag register_long_arrays  on
+php_flag allow_url_fopen  on
+php_flag cgi.force_redirect  on
+php_flag enable_dl  on
+</Ifmodule>
+
+###End Kloxo PHP config Area
+

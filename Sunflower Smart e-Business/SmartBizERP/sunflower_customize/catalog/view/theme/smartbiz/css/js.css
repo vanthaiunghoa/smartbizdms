@@ -1,0 +1,83 @@
+#Banner li{ 
+		/* 
+			define width and height of list item (slide)
+			entire slider area will adjust according to the parameters provided here
+		*/ 
+		overflow:hidden; 
+		}	
+p#controls{
+		margin:0;
+		position:relative;
+		} 
+	
+#prevBtn, #nextBtn{ 
+	display:block;
+	margin:0;
+	overflow:hidden;
+	text-indent:-8000px;		
+	width:18px;
+	height:18px;
+	position:absolute;
+	left:-30px;
+	top:-130px;
+	}	
+#nextBtn{ 
+	left:1050px;
+	}														
+#prevBtn a, #nextBtn a{  
+	display:block;
+	width:18px;
+	height:18px;
+	background:url(../img/js/left.png) no-repeat 0 0;	
+	}	
+#nextBtn a{ 
+	background:url(../img/js/right.png) no-repeat 0 0;	
+	}			
+	
+/*
+	root element for scrollable items. Must be absolutely positioned
+	and it should have a extremely large width to accommodate scrollable items.
+	it's enough that you set width and height for the root element and
+	not for this element.
+*/
+.ThreeCols2 .items {
+	/* this cannot be too large */
+	width:20000em;
+	position:absolute;
+	
+}
+
+/*
+	a single item. must be floated in horizontal scrolling.
+	typically, this element is the one that *you* will style
+	the most.
+*/
+.items div {
+	float:left;
+	width: 620px;
+}
+
+
+/* error container */
+#errors {
+	background-color:#163356;
+	color:#fff;
+	width:400px;
+	padding:20px;
+	margin:5px auto;
+	display:none;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;			
+}
+
+/* title */
+#errors h2 {
+	margin:-5px 0;
+	color:yellow;
+}
+.hidden {
+	display:none;	
+}
+.scrollDisable {
+	visibility: hidden;
+}

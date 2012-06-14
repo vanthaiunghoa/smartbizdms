@@ -1,0 +1,10 @@
+Dear Adminstrator,
+
+[industry]
+[product]
+[company_size]
+[budget]
+[role]
+[comment]
+[phone]
+[address]
